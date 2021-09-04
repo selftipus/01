@@ -1,0 +1,39 @@
+import math
+
+# Zahl
+n=float(-1.12)
+while abs(round(n))!=n or n>100:             # eingabe erfolgt solange bis eine richtige zahl eingegeben wurde
+        print("Bitte folgen Sie der Anweisung.")
+        n = float(input("Geben Sie eine natürliche Zahl zwischen 0 und 100 ein: ")) # negative oder rationale zahlen werden akzeptiert
+n=int(n)       # zahl ohne nachkommastellen
+
+
+# sonderfaelle
+if   n ==   0:
+    print("null")
+if   n ==   1:
+    print("eins")
+elif n ==  11:
+    print("elf")
+elif n ==  12:
+    print("zwoelf")
+elif n == 100:
+    print("hundert")
+
+# alle anderen
+else:
+    letzte_ziffer=n%10
+    vorderste_ziffer=math.floor(n/10)
+
+    letzte_ziffern = ["", "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun"]
+    vorderste_ziffern = ["", "zehn", "zwanzig", "dreizig", "vierzig", "fuenfzig", "sechzig","siebzig", "achtzig", "neunzig"]
+    u = str("und")
+
+    if letzte_ziffer == 0:          # zahl 10,20,30,...,90
+        print(vorderste_ziffern[vorderste_ziffer])
+    elif vorderste_ziffer == 0:     # zahl 2-9
+        print(letzte_ziffern[letzte_ziffer])
+    elif vorderste_ziffer == 1:     # zahl 13-19
+        print(letzte_ziffern[letzte_ziffer]+vorderste_ziffern[vorderste_ziffer])
+    else:                           # zahl 21-99 ohne 30,40,50,...,90
+        print(letzte_ziffern[letzte_ziffer]+u+vorderste_ziffern[vorderste_ziffer])
